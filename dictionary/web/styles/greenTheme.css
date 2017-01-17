@@ -1,0 +1,46 @@
+
+body {
+    /*background-color: #32cd32;*/
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+    margin: auto;
+}
+
+#topBanner {
+    background-color: #32cd32;
+    padding: 1em 0em 1em 0em;
+    margin: auto;
+    width: 100%;
+}
+/*#rotatedBox {
+    transform: rotate(356deg); 
+    width: 115%; 
+    max-height: 20%;
+    margin-left: -10%;
+    position: absolute; 
+}*/
+
+#searchBox {
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    border-radius: 25px;
+    padding: 0.5em;
+}
+
+#searchInput {
+    padding: 0.5em;
+    border: none;
+    outline: none;
+    width: 80%;
+}
+
+h1 {
+    width: 60%; /*30%*/
+    padding: 0.25em 0em 0.25em 0em;
+    margin: 0;
+    background-color: #32cd32;
+    border-radius: 20px 20px 0px 0px;
+    text-align: center;
+    font-family: "Comic sans MS";
+}
