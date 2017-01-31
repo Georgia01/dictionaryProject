@@ -20,6 +20,9 @@ h1 {
     border-radius: 20px 20px 0px 0px;
     text-align: center;
 }
+h2 {
+    font-size: 1em;
+}
 
 #topBanner {
     background-color: #32cd32;
@@ -47,13 +50,21 @@ h1 {
 #mainBody {
     padding: 2em;
     border: solid 0.5em #32cd32;
-    
 }
 
 footer {
     background-color: #32cd32;
     height: 2em;
     border-radius: 0px 0px 25px 25px;
+}
+
+.tab [type=radio] {
+    display: none;        /* Gets rid of bullet point and just leaves the label*/
+}
+
+.content {
+    background-color: yellow;
+    padding-bottom: 2em;
 }
 
 /*#rotatedBox {
@@ -67,47 +78,99 @@ footer {
 
 /* ========================== FIRST BREAKPOINT ========================== */
 @media screen and (min-width: 500px) {
-  /* styles for above mobile sizes  - can add hover comands here*/
-  
-  body {
-    width: 90%;
-    margin: auto;
-  }
-  
-  #searchInput {
-    width: 88%;
-}
-  
+    /* styles for above mobile sizes  - can add hover comands here*/
+
+    body {
+        width: 90%;
+        margin: auto;
+    }
+
+    #searchInput {
+        width: 88%;
+    }
+
+    #tabs {
+        position: relative;   /* Puts content underneath these*/
+        min-height: 200px;    /* Keeps the minimum height needed for the whole thing */
+        margin: 25px;       /* Needed to move tabs down*/
+        width: 100%;
+    }
+
+    .tab {                  /*Puts bullet point labels next to each other*/
+        float: left; 
+    }
+
+    .tab label {            /* Decoration and padding to make labels look lik tabs*/
+        background: #eee; 
+        padding: 1em 1em 1em 1em; 
+        border: 1px solid #ccc; 
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .content {              /*where details are displayed. Makes box boundaries*/
+        position: absolute;
+        top: 2em;
+        left: 0%;               /*very important! Puts content on top of each other*/ 
+        background: white;
+        width: 80%;
+        height: 30%;
+        border: 1px solid #ccc; 
+        padding: 1em;
+    }
+
+    [type=radio]:checked ~ label {
+        background: white;
+        border-bottom: 1px solid white;   /*makes label white once selected*/
+    }
+    [type=radio]:checked ~ label ~ .content {
+        z-index: 1;                       /*Makes content priority for when the check box is selected*/
+    }
 }
 
 
 /* ========================== Middle BREAKPOINT ========================== */
 @media screen and (min-width: 750px) {
-  /* styles for above mobile sizes  - can add hover comands here*/
-  
-  body {
-    width: 80%;
-    margin: auto;
-  }
-  
+    /* styles for above mobile sizes  - can add hover comands here*/
+
+    body {
+        width: 80%;
+        margin: auto;
+    }
+
+    #rightPanel {
+        float: right;
+        width: 25%;
+        border: 5px solid red;
+        margin: auto;
+    }
+
+    #tabs {
+        float: left;
+        width: 73%;
+        margin: 0em;
+    }
+    
+    #mainBody {
+        height: 40em;
+    }
 }
 
 
 /* ========================== Last BREAKPOINT ========================== */
 @media screen and (min-width: 960px) {
-  /* styles for above mobile sizes  - can add hover comands here*/
-  
-body {
-    width: 70%;
-    margin: auto;
-}
-  
-#searchBox {
-    width: 50%;
-}
-  
-#topBanner {
-    padding: 2em 0em 1em 0em;
-}
+    /* styles for above mobile sizes  - can add hover comands here*/
 
+    body {
+        width: 70%;
+        margin: auto;
+    }
+
+    #searchBox {
+        width: 50%;
+    }
+
+    #topBanner {
+        padding: 2em 0em 1em 0em;
+    }
 }
