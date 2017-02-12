@@ -4,36 +4,37 @@
         <title>First page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/greenTheme.css">
+        <link rel="stylesheet" href="styles/secondTheme.css">
         <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <!--<img id="rotatedBox" src="greenRectangle.png"/>-->
-        <h1> Dictionary</h1>
+        
         <article id="topBanner">
-            <section id="searchBox">
-                <input id="searchInput" placeholder="Search here" type="text" maxlength="30" />
+            <h1 id="h1"> Dictionary</h1>
+            <form id="searchBox" onsubmit="myFunc()">
+                <input id="searchInput" placeholder="Search here" type="text" maxlength="30" autocomplete="off" />
                 <i class="fa fa-search fa-lg"></i>
-            </section>
+            </form>
         </article>
         <main id="mainBody">
             <article id="tabs">
                 <section class="tab">
                     <input type="radio" id="tab1" name="tabgroup" checked>
                     <label for="tab1">Definition</label>
-                    <p class="content">1 some text and content</p>
+                    <p class="content" id="definition">1 some text and content</p>
                 </section>
 
                 <section class="tab">
                     <input type="radio" id="tab2" name="tabgroup">
                     <label for="tab2">Examples</label>
-                    <p class="content">2 some text and content</p>
+                    <p class="content" id="example">2 some text and content</p>
                 </section>
 
                 <section class="tab">
                     <input type="radio" id="tab3" name="tabgroup">
                     <label for="tab3">Origin</label>
-                    <p class="content">3 some text and content</p>
+                    <p class="content" id="origin">3 some text and content</p>
                 </section>
             </article>
             <article id="rightPanel">
@@ -44,6 +45,49 @@
             </article>
         </main>
         <footer>
-        </footer>    
+        </footer>  
+      
+        <script src="json/descriptions.js"></script>
+        <script>
+           function myFunc(){
+               
+            let searchInput = document.getElementById("searchInput").value;
+            console.log(`searchInput: ${searchInput}`);
+            
+            if (searchInput) {
+                expandMain();
+            }
+            
+            let obj = JSON.parse(jsonString);
+            let index = obj.findIndex(function(item, i){
+                return item.name === searchInput
+            });
+            
+            let defintionDataSection = document.getElementById("definition");
+            let definitionData = `${obj[index].name} ${obj[index].description}`;
+            defintionDataSection.innerHTML = definitionData; 
+            
+            let exampleDataSection = document.getElementById("example");
+            let exampleData = `${obj[index].example}`;
+            exampleDataSection.innerHTML = exampleData; 
+            
+            let originDataSection = document.getElementById("origin");
+            let originData = `${obj[index].origin}`;
+            originDataSection.innerHTML = originData; 
+            
+            event.preventDefault();
+           }
+        </script>
+        
+        <script>
+            function expandMain(){
+//                document.getElementById("h1").style.paddingTop = "0em";
+                document.getElementById("topBanner").style.animation =  "movingHeader 2s 1 forwards";
+                document.getElementById("mainBody").style.display = "block";
+                document.getElementById("mainBody").style.animation =  "movingBody 2s 1 forwards";
+
+                event.preventDefault();
+            }
+        </script>
     </body>
 </html>

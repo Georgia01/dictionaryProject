@@ -13,21 +13,49 @@ body {
     width: 100%;
     min-width: 300px;
     margin: auto;
-    background: linear-gradient(#239023, #70dc70);
+    margin-top:50%;
+    background-image: url("../images/swirls.jpg");
+}
+
+@keyframes movingHeader{
+/*    0% {
+        transform: top(2em);
+    }
+    100% {
+        transform: top(0em);
+    };*/
+0% {
+    transform: translateY(-0%);
+  }
+  100% {
+    transform: translateY(-70%);
+  }
+}
+
+@keyframes movingBody{
+    0% {
+        transform: translateY(-0%);
+    }
+    100% {
+        transform: translateY(-33%);
+    }
 }
 
 h1 {
+    /*rename me here, in index and in in javascripts*/
     font-family: 'Leckerli One', cursive;
     width: 100%;
     /*width: 60%;*/
     /*max-width: 300px;*/
-    padding-top:0.5em;
+    /*padding-top:2em;*/
+    padding-top:25%;
     min-width: 200px;
     margin: 0em;
-    background-color: #32cd32;
     border-radius: 20px 20px 0px 0px;
     text-align: center;
     font-size: 3em;
+/*    animation: movingHeader 5s 1;
+    animation-fill-mode: forwards;*/
 }
 
 h2 {
@@ -35,11 +63,14 @@ h2 {
 }
 
 #topBanner {
-    background-color: #32cd32;
+    /*background-color: #32cd32;*/
     /*border-radius: 0px 25px 0px 0px;*/
     padding: 1em 0em 1em 0em;
     margin: auto;
     width: 100%;
+    
+/*    animation: movingHeader 2s 1;*/
+    animation-fill-mode: forwards;
 }
 
 #searchBox {
@@ -58,17 +89,19 @@ h2 {
 }
 
 #mainBody {
-    /*display: none; before search*/ 
-    display: block;  
+     /*before search*/ 
+     display: none;
+    /*display: block;*/  
     padding: 2em;
-    border: solid 0.5em #32cd32;
+    /*border: solid 0.5em #32cd32;*/
+    border-radius: 20px 20px 20px 20px;
     background-color: white;
 }
 
 footer {
-    background-color: #32cd32;
+    /*background-color: #32cd32;*/
     height: 2em;
-    border-radius: 0px 0px 25px 25px;
+    /*border-radius: 0px 0px 25px 25px;*/
 }
 
 .tab [type=radio] {
