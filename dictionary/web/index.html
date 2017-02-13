@@ -11,30 +11,31 @@
         <!--<img id="rotatedBox" src="greenRectangle.png"/>-->
         
         <article id="topBanner">
-            <h1 id="h1"> Dictionary</h1>
+            <h1 id="h1">Programming Dictionary</h1>
             <form id="searchBox" onsubmit="myFunc()">
                 <input id="searchInput" placeholder="Search here" type="text" maxlength="30" autocomplete="off" />
                 <i class="fa fa-search fa-lg"></i>
             </form>
         </article>
         <main id="mainBody">
+            <p><span id="name"></span><span id="type"></span></p>
             <article id="tabs">
                 <section class="tab">
                     <input type="radio" id="tab1" name="tabgroup" checked>
                     <label for="tab1">Definition</label>
-                    <p class="content" id="definition">1 some text and content</p>
+                    <div class="content" id="definition"></div>
                 </section>
 
                 <section class="tab">
                     <input type="radio" id="tab2" name="tabgroup">
                     <label for="tab2">Examples</label>
-                    <p class="content" id="example">2 some text and content</p>
+                    <div class="content" id="example"></div>
                 </section>
 
                 <section class="tab">
                     <input type="radio" id="tab3" name="tabgroup">
                     <label for="tab3">Origin</label>
-                    <p class="content" id="origin">3 some text and content</p>
+                    <div class="content" id="origin"><div id="map"></div></div>
                 </section>
             </article>
             <article id="rightPanel">
@@ -62,18 +63,26 @@
             let index = obj.findIndex(function(item, i){
                 return item.name === searchInput
             });
+
+            let nameSection = document.getElementById("name");
+            let nameData = `${obj[index].name}`;
+            nameSection.innerHTML = nameData.charAt(0).toUpperCase() + nameData.slice(1); 
+            
+            let typeSection = document.getElementById("type");
+            let typeData = "(" + `${obj[index].type}` + ")";
+            typeSection.innerHTML = typeData; 
             
             let defintionDataSection = document.getElementById("definition");
-            let definitionData = `${obj[index].name} ${obj[index].description}`;
+            let definitionData = `${obj[index].description}`;
             defintionDataSection.innerHTML = definitionData; 
             
             let exampleDataSection = document.getElementById("example");
             let exampleData = `${obj[index].example}`;
             exampleDataSection.innerHTML = exampleData; 
             
-            let originDataSection = document.getElementById("origin");
-            let originData = `${obj[index].origin}`;
-            originDataSection.innerHTML = originData; 
+//            let originDataSection = document.getElementById("origin");
+//            let originData = `${obj[index].origin}`;
+//            originDataSection.innerHTML = originData; 
             
             event.preventDefault();
            }
@@ -81,13 +90,39 @@
         
         <script>
             function expandMain(){
-//                document.getElementById("h1").style.paddingTop = "0em";
-                document.getElementById("topBanner").style.animation =  "movingHeader 2s 1 forwards";
+                
+                if (typeof window.innerWidth != 'undefined') {
+                    viewportwidth = window.innerWidth;
+                }
+                
+                if (viewportwidth >= 500) {
+                    document.getElementById("topBanner").style.animation =  "movingHeader 2s 1 forwards";
+                    document.getElementById("mainBody").style.animation =  "movingBody 2s 1 forwards";
+                }
+                else {
+                    document.body.style.marginTop = "0px";
+                    document.getElementById("h1").style.paddingTop = "0px";
+                }
                 document.getElementById("mainBody").style.display = "block";
-                document.getElementById("mainBody").style.animation =  "movingBody 2s 1 forwards";
-
                 event.preventDefault();
             }
         </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap">
+        </script>
+        <script>
+            function initMap() {
+                var uluru = {lat: -25.363, lng: 131.044};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru
+                });
+                var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+                });
+            }
+        </script>
+
     </body>
 </html>

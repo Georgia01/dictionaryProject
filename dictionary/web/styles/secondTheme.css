@@ -1,9 +1,5 @@
-/*@import url('https://fonts.googleapis.com/css?family=Aclonica');*/
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One');
-
-/** {
-    font-family: 'Aclonica', sans-serif;
-}*/
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
 
 html {
     height: 100%;
@@ -18,18 +14,12 @@ body {
 }
 
 @keyframes movingHeader{
-/*    0% {
-        transform: top(2em);
+    0% {
+        transform: translateY(-0%);
     }
     100% {
-        transform: top(0em);
-    };*/
-0% {
-    transform: translateY(-0%);
-  }
-  100% {
-    transform: translateY(-70%);
-  }
+        transform: translateY(-40%);
+    }
 }
 
 @keyframes movingBody{
@@ -37,7 +27,7 @@ body {
         transform: translateY(-0%);
     }
     100% {
-        transform: translateY(-33%);
+        transform: translateY(-10%);
     }
 }
 
@@ -47,30 +37,34 @@ h1 {
     width: 100%;
     /*width: 60%;*/
     /*max-width: 300px;*/
-    /*padding-top:2em;*/
-    padding-top:25%;
+    padding-bottom:0.5em;
     min-width: 200px;
     margin: 0em;
     border-radius: 20px 20px 0px 0px;
     text-align: center;
     font-size: 3em;
-/*    animation: movingHeader 5s 1;
-    animation-fill-mode: forwards;*/
 }
 
 h2 {
     font-size: 1em;
 }
 
+
+#name {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 3em;
+    margin: 0em 0em 0.5em 0em;
+}
+
+#type {
+    margin-left: 1em;
+    font-style: italic;
+}
+
 #topBanner {
-    /*background-color: #32cd32;*/
-    /*border-radius: 0px 25px 0px 0px;*/
     padding: 1em 0em 1em 0em;
     margin: auto;
     width: 100%;
-    
-/*    animation: movingHeader 2s 1;*/
-    animation-fill-mode: forwards;
 }
 
 #searchBox {
@@ -113,6 +107,13 @@ footer {
     padding-bottom: 2em;
 }
 
+#map {
+  /*height: 200px;*/
+  height: 100%;
+  width: 100%;
+  /*width: 200px;*/
+ }
+
 /*#rotatedBox {
     transform: rotate(356deg); 
     width: 115%; 
@@ -126,19 +127,41 @@ footer {
 @media screen and (min-width: 500px) {
     /* styles for above mobile sizes  - can add hover comands here*/
 
+    @keyframes movingHeader{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-45%);
+        }
+    }
+
+    @keyframes movingBody{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-35%);
+        }
+    }
+    
     body {
         width: 90%;
         margin: auto;
         padding: 1em 0em 1em 0em;
     }
 
+    h1 {
+        padding-top:25%;
+    }
+    
     #searchInput {
         width: 88%;
     }
 
     #tabs {
         position: relative;   /* Puts content underneath these*/
-        min-height: 200px;    /* Keeps the minimum height needed for the whole thing */
+        min-height: 50%;    /* Keeps the minimum height needed for the whole thing */
         margin: 25px;       /* Needed to move tabs down*/
         width: 100%;
     }
@@ -148,27 +171,28 @@ footer {
     }
 
     .tab label {            /* Decoration and padding to make labels look lik tabs*/
-        background: #eee; 
-        padding: 1em 1em 1em 1em; 
-        border: 1px solid #ccc; 
+        /*background: #eee;*/ 
+        padding: 0.75em 1em 0.25em 1em; 
+        border-bottom: 0.3em solid gray;
+            /*#ccc;*/ 
         display: inline-block;
         vertical-align: middle;
     }
 
     .content {              /*where details are displayed. Makes box boundaries*/
         position: absolute;
-        top: 2em;
+        top: 3em;
         left: 0%;               /*very important! Puts content on top of each other*/ 
         background: white;
         width: 80%;
-        height: 30%;
+        height: 100%;
         border: 1px solid #ccc; 
         padding: 1em;
     }
 
     [type=radio]:checked ~ label {
         background: white;
-        border-bottom: 1px solid white;   /*makes label white once selected*/
+        border-bottom: 0.3em solid #AFDCEC;
     }
     [type=radio]:checked ~ label ~ .content {
         z-index: 1;                       /*Makes content priority for when the check box is selected*/
@@ -200,6 +224,24 @@ footer {
     
     #mainBody {
         height: 40em;
+    }
+    
+      @keyframes movingHeader{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-48%);
+        }
+    }
+
+    @keyframes movingBody{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-22%);
+        }
     }
 }
 
