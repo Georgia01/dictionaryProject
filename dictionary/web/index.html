@@ -81,16 +81,16 @@
             exampleDataSection.innerHTML = exampleData; 
             
 //            let originDataSection = document.getElementById("origin");
-//            let originData = `${obj[index].origin}`;
 //            originDataSection.innerHTML = originData; 
             
+            addMap();
             event.preventDefault();
            }
         </script>
         
         <script>
             function expandMain(){
-                
+                 
                 if (typeof window.innerWidth != 'undefined') {
                     viewportwidth = window.innerWidth;
                 }
@@ -106,21 +106,34 @@
                 document.getElementById("mainBody").style.display = "block";
                 event.preventDefault();
             }
-        </script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap">
+            
         </script>
         <script>
+            function addMap(){
+                 var googleMapApi = document.createElement("script");
+                googleMapApi.setAttribute("async", "");
+                googleMapApi.setAttribute("defer", "");
+                googleMapApi.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap");
+                document.body.appendChild(googleMapApi);
+            }
+            
+        </script>
+        <script>
+            
             function initMap() {
-                var uluru = {lat: -25.363, lng: 131.044};
+                let searchInput = document.getElementById("searchInput").value;
+                let obj = JSON.parse(jsonString);
+                let index = obj.findIndex(function(item, i){
+                    return item.name === searchInput
+                });
+                let originLatData = `${obj[index].originLat}`;
+                let originLongData = `${obj[index].originLong}`;
+            
+                var location = {lat: parseInt(originLatData, 10), lng: parseInt(originLongData, 10)};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
-                    center: uluru
-                });
+                    center: location, zoom: 4});
                 var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-                });
+                    position: location, map: map});
             }
         </script>
 

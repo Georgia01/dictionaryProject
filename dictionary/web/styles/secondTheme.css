@@ -1,3 +1,4 @@
+/*@import url('https://fonts.googleapis.com/css?family=Aclonica');*/
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One');
 @import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
 
@@ -14,12 +15,12 @@ body {
 }
 
 @keyframes movingHeader{
-    0% {
-        transform: translateY(-0%);
-    }
-    100% {
+0% {
+    transform: translateY(-0%);
+  }
+  100% {
         transform: translateY(-40%);
-    }
+  }
 }
 
 @keyframes movingBody{
@@ -161,7 +162,7 @@ footer {
 
     #tabs {
         position: relative;   /* Puts content underneath these*/
-        min-height: 50%;    /* Keeps the minimum height needed for the whole thing */
+        min-height: 500px;    /* Keeps the minimum height needed for the whole thing */
         margin: 25px;       /* Needed to move tabs down*/
         width: 100%;
     }
@@ -185,7 +186,7 @@ footer {
         left: 0%;               /*very important! Puts content on top of each other*/ 
         background: white;
         width: 80%;
-        height: 100%;
+        height: 80%;
         border: 1px solid #ccc; 
         padding: 1em;
     }
@@ -223,13 +224,13 @@ footer {
     }
     
     #mainBody {
-        height: 40em;
+        height: 60em;
     }
     
       @keyframes movingHeader{
         0% {
             transform: translateY(-0%);
-        }
+}
         100% {
             transform: translateY(-48%);
         }
