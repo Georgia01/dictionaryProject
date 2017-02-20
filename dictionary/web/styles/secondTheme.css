@@ -108,6 +108,10 @@ footer {
     padding-bottom: 2em;
 }
 
+#origin {
+    height: 12em;
+}
+
 #map {
   /*height: 200px;*/
   height: 100%;
@@ -115,6 +119,34 @@ footer {
   /*width: 200px;*/
  }
 
+ .navigationList {
+    list-style: none;
+    margin: auto;
+    padding: 0em;
+ }
+ 
+ /*.navigationList li{
+     display: inline;
+ }*/
+ 
+ .navigationButton {
+     border-radius: 25px;
+     width: 2em;
+     height: 2em;
+     border: none;
+     margin: 0.2em;
+     background-color: gray;
+     color: white;
+     -webkit-transition: width 0.5s, height 0.5s; 
+    transition: width 0.5s, height 0.5s;
+ }
+ 
+.navigationButton:hover {
+    background-color: #AFDCEC;
+    width: 2.25em; 
+    height: 2.25em; 
+ }
+ 
 /*#rotatedBox {
     transform: rotate(356deg); 
     width: 115%; 
@@ -191,6 +223,10 @@ footer {
         padding: 1em;
     }
 
+    #origin {
+        height: 80%;
+    }
+    
     [type=radio]:checked ~ label {
         background: white;
         border-bottom: 0.3em solid #AFDCEC;
