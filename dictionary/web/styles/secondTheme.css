@@ -104,7 +104,6 @@ footer {
 }
 
 .content {
-    background-color: yellow;
     padding-bottom: 2em;
 }
 
@@ -123,38 +122,28 @@ footer {
     list-style: none;
     margin: auto;
     padding: 0em;
+    /*float: left;*/
  }
  
- /*.navigationList li{
+ .navigationList li{
      display: inline;
- }*/
+ }
  
  .navigationButton {
      border-radius: 25px;
      width: 2em;
      height: 2em;
-     border: none;
-     margin: 0.2em;
+     border: 0.15em solid white;
      background-color: gray;
      color: white;
-     -webkit-transition: width 0.5s, height 0.5s; 
-    transition: width 0.5s, height 0.5s;
+     -webkit-transition: border 0.25s; 
+    transition: border 0.25s;
  }
  
 .navigationButton:hover {
     background-color: #AFDCEC;
-    width: 2.25em; 
-    height: 2.25em; 
+    border: 0.15em solid #AFDCEC;
  }
- 
-/*#rotatedBox {
-    transform: rotate(356deg); 
-    width: 115%; 
-    max-height: 20%;
-    margin-left: -10%;
-    position: absolute; 
-}*/
-
 
 /* ========================== FIRST BREAKPOINT ========================== */
 @media screen and (min-width: 500px) {
@@ -174,7 +163,7 @@ footer {
             transform: translateY(-0%);
         }
         100% {
-            transform: translateY(-35%);
+            transform: translateY(-18%);
         }
     }
     
@@ -183,7 +172,11 @@ footer {
         margin: auto;
         padding: 1em 0em 1em 0em;
     }
-
+    
+    #mainBody {
+        overflow: auto; 
+    }
+    
     h1 {
         padding-top:25%;
     }
@@ -259,10 +252,6 @@ footer {
         margin: 0em;
     }
     
-    #mainBody {
-        height: 60em;
-    }
-    
       @keyframes movingHeader{
         0% {
             transform: translateY(-0%);
@@ -287,6 +276,24 @@ footer {
 @media screen and (min-width: 960px) {
     /* styles for above mobile sizes  - can add hover comands here*/
 
+       @keyframes movingHeader{
+        0% {
+            transform: translateY(-0%);
+}
+        100% {
+            transform: translateY(-60%);
+        }
+    }
+
+    @keyframes movingBody{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-32%);
+        }
+    }
+    
     body {
         width: 70%;
         margin: auto;
