@@ -32,7 +32,7 @@ body {
     }
 }
 
-h1 {
+pageHeader {
     /*rename me here, in index and in in javascripts*/
     font-family: 'Leckerli One', cursive;
     width: 100%;
@@ -177,7 +177,7 @@ footer {
         overflow: auto; 
     }
     
-    h1 {
+    pageHeader {
         padding-top:25%;
     }
     

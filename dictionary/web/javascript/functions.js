@@ -5,10 +5,12 @@ function myFunc(){
 
     let obj = JSON.parse(jsonString);
     let index = obj.findIndex(function(item, i){
-        return item.name === searchInput
+        return item.name === searchInput;
     });
 
-    if (index != -1) {
+    if (index !== -1) {
+        document.getElementById("wordDoesNotExist").style.display = "none";
+    
         expandMain();
         let nameSection = document.getElementById("name");
         let nameData = `${obj[index].name}`;
@@ -31,13 +33,17 @@ function myFunc(){
         exampleDataSection.innerHTML = finalExampleOutput; 
 
         addMap();
+    } else {
+        document.getElementById("wordDoesNotExist").style.display = "block";
+        document.getElementById("mainBody").style.display = "none";
+        document.getElementById("navigationArticle").style.display = "block";
     }
     event.preventDefault();
 }
 
 function expandMain(){
 
-    if (typeof window.innerWidth != 'undefined') {
+    if (typeof window.innerWidth !== 'undefined') {
         viewportwidth = window.innerWidth;
     }
 
@@ -65,7 +71,7 @@ function initMap() {
     let searchInput = document.getElementById("searchInput").value;
     let obj = JSON.parse(jsonString);
     let index = obj.findIndex(function(item, i){
-        return item.name === searchInput
+        return item.name === searchInput;
     });
     let originLatData = `${obj[index].originLat}`;
     let originLongData = `${obj[index].originLong}`;
