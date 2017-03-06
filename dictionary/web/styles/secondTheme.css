@@ -32,7 +32,7 @@ body {
     }
 }
 
-pageHeader {
+#pageHeader {
     /*rename me here, in index and in in javascripts*/
     font-family: 'Leckerli One', cursive;
     width: 100%;
@@ -130,19 +130,24 @@ footer {
  }
  
  .navigationButton {
-     border-radius: 25px;
-     width: 2em;
-     height: 2em;
-     border: 0.15em solid white;
-     background-color: gray;
-     color: white;
-     -webkit-transition: border 0.25s; 
+    border-radius: 25px;
+    width: 2em;
+    height: 2em;
+    border: 0.15em solid white;
+    background-color: gray;
+    color: white;
+    -webkit-transition: border 0.25s; 
     transition: border 0.25s;
+    cursor: pointer;
  }
  
 .navigationButton:hover {
     background-color: #AFDCEC;
     border: 0.15em solid #AFDCEC;
+ }
+ 
+ #wordList {
+     display: none;
  }
 
 /* ========================== FIRST BREAKPOINT ========================== */
@@ -177,12 +182,16 @@ footer {
         overflow: auto; 
     }
     
-    pageHeader {
+    h1 {
         padding-top:25%;
     }
     
     #searchInput {
         width: 88%;
+    }
+
+    #magGlass {
+        cursor: pointer;
     }
 
     #tabs {
@@ -200,11 +209,16 @@ footer {
         /*background: #eee;*/ 
         padding: 0.75em 1em 0.25em 1em; 
         border-bottom: 0.3em solid gray;
-            /*#ccc;*/ 
         display: inline-block;
         vertical-align: middle;
+        cursor: pointer;
     }
 
+    .tab label:hover {            /* Decoration and padding to make labels look lik tabs*/
+        color: #73A0B0;
+        border-bottom: 0.3em solid #73A0B0;
+    }
+    
     .content {              /*where details are displayed. Makes box boundaries*/
         position: absolute;
         top: 3em;
@@ -212,7 +226,7 @@ footer {
         background: white;
         width: 80%;
         height: 80%;
-        border: 1px solid #ccc; 
+        border: 0.1em solid #AFDCEC; 
         padding: 1em;
     }
 
@@ -241,9 +255,18 @@ footer {
 
     #rightPanel {
         float: right;
-        width: 25%;
-        border: 5px solid red;
+        width: 20%;
+        border: 5px solid #AFDCEC;
         margin: auto;
+        padding: 0.3em;
+        border-radius: 20px;
+        margin: 2em 1em 3em 0em;
+    }
+    
+    #wordDayHeader {
+        text-align: center;
+        font-family: 'Caveat Brush', cursive;
+        font-size: 1.4em;
     }
 
     #tabs {
@@ -252,7 +275,14 @@ footer {
         margin: 0em;
     }
     
-      @keyframes movingHeader{
+    
+    .navigationButton {
+        width: 3em;
+        height: 3em;
+        margin: 0.15em;
+    }
+ 
+    @keyframes movingHeader{
         0% {
             transform: translateY(-0%);
 }
@@ -269,6 +299,15 @@ footer {
             transform: translateY(-22%);
         }
     }
+    
+/*    @keyframes movingBodyNotFound{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-55%);
+        }
+    }*/
 }
 
 
@@ -307,3 +346,15 @@ footer {
         padding: 2em 0em 1em 0em;
     }
 }
+
+/* ========================== Mini BREAKPOINT ========================== */
+@media screen and (min-width: 1513px) {
+   #rightPanel {
+        width: 23%;
+    }
+}
+
+
+
+
+

@@ -10,15 +10,13 @@
     <body>
         <article id="topBanner">
             <h1 id="pageHeader">Programming Dictionary</h1>
-            <form id="searchBox" onsubmit="myFunc()">
+            <form id="searchBox" onsubmit="search()">
                 <input id="searchInput" placeholder="Search here" type="text" maxlength="30" autocomplete="off" />
-                <i class="fa fa-search fa-lg"></i>
+                <i class="fa fa-search fa-lg" id="magGlass"></i>
             </form>
-            <section id="wordDoesNotExist">
-                <p>That word does not exist in this dictionary. See below for a list of words that do.</p>
-            </section>
         </article>
         <main id="mainBody">
+        <div id="mainContent">
             <p><span id="name"></span><span id="type"></span></p>
             <article id="tabs">
                 <section class="tab">
@@ -40,12 +38,11 @@
                 </section>
             </article>
             <article id="rightPanel">
-                <h2>Word of the day</h2>
-                <section>
-                    <p>word:  description + examples</p>
-                </section>
+                <h2 id="wordDayHeader">Word of the day</h2>
+                <p id="WordDayName"></p>
             </article>
-            <article id="navigationArticle">
+            </div>
+            <article class="navigationArticle">
                 <h2>View words by letter</h2>
                 <ul class="navigationList">
                     <li><button class="navigationButton">A</button></li>
@@ -75,11 +72,16 @@
                     <li><button class="navigationButton">Y</button></li>
                     <li><button class="navigationButton">Z</button></li>
                 </ul>
+                <section id="wordList">
+                    <p>
+                        hahahahha!
+                    </p>
+                </section>
             </article>
         </main>
         <footer>
         </footer>  
-        <script src="javascript/descriptions.js"></script>
+        <script src="json/descriptions.js"></script>
         <script src="javascript/functions.js"></script>
     </body>
 </html>
