@@ -1,3 +1,4 @@
+var loadGoogleMapsOnce = 0;
 var moveMaindOnce = 0;
 
 function search(){
@@ -17,10 +18,12 @@ function search(){
         document.getElementById("wordList").style.display = "none";
         fillInDetails(obj, index);
         addMap();
+        wordOfTheDay(obj);
     } else {
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("wordList").style.display = "block";
     }
+    
     expandMain();
     event.preventDefault();
 }
@@ -68,13 +71,27 @@ function expandMain(){
     exampleDataSection.innerHTML = finalExampleOutput;
 }
 
+function wordOfTheDay(obj){
+    var jsonLength = obj.length;
+    var randomIndex = Math.floor(Math.random()*(jsonLength+1)); 
+    
+    let wordOfDaySection = document.getElementById("wordDayName");
+    let name = `${obj[randomIndex].name}`;
+    console.log(`name: ${name}`);
+    wordOfDaySection.innerHTML = name;
+    event.preventDefault();
+}
+
  function addMap(){
     var googleMapApi = document.createElement("script");
     googleMapApi.setAttribute("async", "");
     googleMapApi.setAttribute("defer", "");
     //calls the initMap() to actually create the map and position the marker 
     googleMapApi.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap");
-    document.body.appendChild(googleMapApi);
+    if (loadGoogleMapsOnce === 0) {
+        document.body.appendChild(googleMapApi);
+        loadGoogleMapsOnce = loadGoogleMapsOnce + 1;
+    }
 }
 
 function initMap() {

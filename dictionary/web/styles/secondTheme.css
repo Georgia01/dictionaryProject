@@ -266,7 +266,15 @@ footer {
     #wordDayHeader {
         text-align: center;
         font-family: 'Caveat Brush', cursive;
+        text-decoration: underline;
         font-size: 1.4em;
+    }
+    
+    #wordDayName {
+        text-align: center;
+        font-family: 'Caveat Brush', cursive;
+        font-size: 1.4em;
+        color: #73A0B0;
     }
 
     #tabs {
