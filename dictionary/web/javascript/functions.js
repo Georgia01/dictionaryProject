@@ -2,7 +2,7 @@
     let loadGoogleMapsOnce = 0;
     let moveMaindOnce = 0;
     let randomWord = "";
-
+    let googleMapApi = document.createElement("script");
     document.getElementById("searchBox").addEventListener("submit", search);
     document.getElementById("randomWord").addEventListener("click", loadRandomWord);
 
@@ -12,7 +12,6 @@
         if (window.location.hash) {
             //get the param from the end of the url and reset it
             searchInput = window.location.hash.substr(1);
-            location.hash = "";
         } else {
             searchInput = document.getElementById("searchInput").value;
         }
@@ -37,6 +36,7 @@
         }
 
         expandMain();
+        window.location.hash = "";
         event.preventDefault();
     }
 
@@ -64,7 +64,6 @@
     }
 
     function fillInDetails(obj, index) {
-
         let nameSection = document.getElementById("name");
         let nameData = `${obj[index].name}`;
         nameSection.innerHTML = nameData.charAt(0).toUpperCase() + nameData.slice(1);
@@ -95,26 +94,35 @@
         let name = `${obj[randomIndex].name}`;
         randomWord = name;
         randomWordSection.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
-        ;
+        
         event.preventDefault();
     }
 
     function addMap() {
-        let googleMapApi = document.createElement("script");
         googleMapApi.setAttribute("async", "");
         googleMapApi.setAttribute("defer", "");
         //calls the initMap() to actually create the map and position the marker 
         googleMapApi.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap");
         if (loadGoogleMapsOnce === 0) {
             document.body.appendChild(googleMapApi);
+        googleMapApi.removeAttribute("src");
             loadGoogleMapsOnce = loadGoogleMapsOnce + 1;
+        } 
+        else {
+            initMap();
         }
     }
 
 })();
 
 function initMap() {
-    let searchInput = document.getElementById("searchInput").value;
+    let searchInput;
+    if (window.location.hash) {
+        searchInput = window.location.hash.substr(1);
+    } else {
+        searchInput = document.getElementById("searchInput").value;
+    }
+    
     let obj = JSON.parse(jsonString);
     let index = obj.findIndex(function (item, i) {
         return item.name === searchInput;
@@ -122,10 +130,8 @@ function initMap() {
 
     let originLatData = `${obj[index].originLat}`;
     let originLongData = `${obj[index].originLong}`;
-
     let location = {lat: parseInt(originLatData, 10), lng: parseInt(originLongData, 10)};
-    let map = new google.maps.Map(document.getElementById('map'), {
+    let googleMap = new google.maps.Map(document.getElementById('map'), {
         center: location, zoom: 4});
-    let marker = new google.maps.Marker({
-        position: location, map: map});
+    let marker = new google.maps.Marker({position: location, map: googleMap});
 }
