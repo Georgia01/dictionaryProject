@@ -1,16 +1,15 @@
 (function () {
     let loadGoogleMapsOnce = 0;
     let moveMaindOnce = 0;
-    let wordOfDay = "";
+    let randomWord = "";
 
     document.getElementById("searchBox").addEventListener("submit", search);
-    document.getElementById("wordDayName").addEventListener("click", loadWordOfTheDay);
+    document.getElementById("randomWord").addEventListener("click", loadRandomWord);
 
     function search() {
         let searchInput = "";
 
         if (window.location.hash) {
-            console.log("eh");
             //get the param from the end of the url and reset it
             searchInput = window.location.hash.substr(1);
             location.hash = "";
@@ -31,7 +30,7 @@
             document.getElementById("wordList").style.display = "none";
             fillInDetails(obj, index);
             addMap();
-            wordOfTheDay(obj);
+            createRandomWord(obj);
         } else {
             document.getElementById("mainContent").style.display = "none";
             document.getElementById("wordList").style.display = "block";
@@ -41,8 +40,8 @@
         event.preventDefault();
     }
 
-    function loadWordOfTheDay() {
-        window.location.hash = wordOfDay;
+    function loadRandomWord() {
+        window.location.hash = randomWord;
         search();
     }
 
@@ -88,14 +87,14 @@
         exampleDataSection.innerHTML = finalExampleOutput;
     }
 
-    function wordOfTheDay(obj) {
+    function createRandomWord(obj) {
         let jsonLength = obj.length;
         let randomIndex = Math.floor(Math.random() * (jsonLength));
-        let wordOfDaySection = document.getElementById("wordDayName");
+        let randomWordSection = document.getElementById("randomWord");
 
         let name = `${obj[randomIndex].name}`;
-        wordOfDay = name;
-        wordOfDaySection.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
+        randomWord = name;
+        randomWordSection.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
         ;
         event.preventDefault();
     }
