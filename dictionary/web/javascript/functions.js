@@ -2,6 +2,8 @@
     let loadGoogleMapsOnce = 0;
     let moveMaindOnce = 0;
     let randomWord = "";
+    let obj = JSON.parse(jsonString);
+    
     let googleMapApi = document.createElement("script");
     document.getElementById("searchBox").addEventListener("submit", search);
     document.getElementById("randomWord").addEventListener("click", loadRandomWord);
@@ -18,7 +20,6 @@
         console.log(`searchInput: ${searchInput}`);
 
         //see if the word exists. If it doesn't then index = -1
-        let obj = JSON.parse(jsonString);
         let index = obj.findIndex(function (item, i) {
             return item.name === searchInput;
         });
@@ -38,6 +39,7 @@
         expandMain();
         window.location.hash = "";
         event.preventDefault();
+        getFullNavigation();
     }
 
     function loadRandomWord() {
@@ -111,6 +113,30 @@
         else {
             initMap();
         }
+    }
+
+    function getFullNavigation() {
+        let finalNavOutput = "";
+        let sortedValues = obj.sort(function (firstWord, secondWord) {
+            return compareStrings(firstWord.name, secondWord.name);
+        });
+        
+        for (i = 0; i < sortedValues.length; i++) {
+            finalNavOutput += `${sortedValues[i].name}` + "</br>";
+        }
+        
+        let width =  (document.getElementById('mainBody').offsetWidth)/3 - 40;
+        console.log("w: " + width);
+        console.log("w2: " + document.getElementById('mainBody').offsetWidth);
+        document.getElementById("navColumns").style.columns = width + "px 3";
+        let navSection = document.getElementById("wordList");
+        navSection.innerHTML = finalNavOutput;
+    }
+
+    function compareStrings(firstName, secondName) {
+        firstName = firstName.toLowerCase();
+        secondName = secondName.toLowerCase();
+        return (firstName < secondName) ? -1 : (firstName > secondName) ? 1 : 0;
     }
 
 })();

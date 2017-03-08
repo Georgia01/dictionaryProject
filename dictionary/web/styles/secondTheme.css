@@ -139,10 +139,6 @@ footer {
     background-color: #AFDCEC;
     border: 0.15em solid #AFDCEC;
  }
- 
- #wordList {
-    display: none;
- }
 
 /* ========================== FIRST BREAKPOINT ========================== */
 @media screen and (min-width: 500px) {
