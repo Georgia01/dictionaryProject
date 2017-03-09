@@ -81,6 +81,14 @@ h2 {
     width: 82%;
 }
 
+#errorBox {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    display: none;
+    padding-bottom: 0em;
+}
+
 #mainBody {
     display: none;
     padding: 2em;
@@ -177,7 +185,7 @@ label {
         border-radius: 15px;
         background-color: #73A0B0;
         text-align: center;
-        font-size: 1.4em;
+        font-size: 1.2em;
         color: white;
         cursor: pointer;
         margin-bottom: 0.5em;
@@ -346,6 +354,11 @@ label {
             transform: translateY(-22%);
         }
     }
+    
+    #randomWord {
+        font-size: 1em;
+        padding: 5px 10px;
+    }
 }
 
 /* ========================== Mini BREAKPOINT ========================== */
@@ -386,7 +399,7 @@ label {
     }
     
     #rightPanel {
-        width: 24%;
+        width: 23%;
     }
 
     #searchBox {
@@ -396,6 +409,11 @@ label {
     #topBanner {
         padding: 2em 0em 1em 0em;
     }
+    
+    .navigationButton {
+        width: 2.6em;
+        height: 2.6em;
+    }
 }
 
 /* ========================== Mini BREAKPOINT ========================== */
@@ -403,13 +421,8 @@ label {
 @media screen and (min-width: 1136px) {
     
     .pageHeaders {
-        font-size: 2.5em;
+        font-size: 2em;
     }
-    
-/*    .navigationButton {
-        width: 3em;
-        height: 3em;
-    }*/
 }
 
 /* ========================== Mini BREAKPOINT ========================== */
@@ -422,6 +435,11 @@ label {
     .navigationButton {
         width: 3.5em;
         height: 3.5em;
+    }
+    
+    #randomWord {
+        font-size: 1.4em;
+        padding: 5px 20px;
     }
 }
 

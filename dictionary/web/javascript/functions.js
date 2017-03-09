@@ -29,12 +29,15 @@
         if (index !== -1) {
             document.getElementById("mainContent").style.display = "block";
             document.getElementById("wordList").style.display = "none";
+            document.getElementById("errorBox").style.display = "none";
             fillInDetails(obj, index);
-            addMap();
+            console.log(`searchInput2: ${searchInput}`);
+            addMap(index);
             createRandomWord(obj);
         } else {
             document.getElementById("mainContent").style.display = "none";
             document.getElementById("wordList").style.display = "block";
+            document.getElementById("errorBox").style.display = "block";
             getFullNavigation();
         }
 
@@ -98,21 +101,6 @@
         randomWordSection.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
     }
 
-    function addMap() {
-        googleMapApi.setAttribute("async", "");
-        googleMapApi.setAttribute("defer", "");
-        //calls the initMap() to actually create the map and position the marker 
-        googleMapApi.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap");
-        if (loadGoogleMapsOnce === 0) {
-            document.body.appendChild(googleMapApi);
-        googleMapApi.removeAttribute("src");
-            loadGoogleMapsOnce = loadGoogleMapsOnce + 1;
-        } 
-        else {
-            initMap();
-        }
-    }
-
     function getFullNavigation() {
        allNavItems = 1;
        getSingleNav();
@@ -126,6 +114,7 @@
 
     function loadWordFromNav(event) {
         window.location.hash = event.target.id;
+        console.log("0.5: " + event.target.id);
         search(event);
     }
 
@@ -176,23 +165,35 @@
             navClass[i].addEventListener('click', getSingleNav);
         }
     })();
+    
+    function addMap(index) {
+        googleMapApi.setAttribute("async", "");
+        googleMapApi.setAttribute("defer", "");
+        googleMapApi.setAttribute("data-index", index);
+        googleMapApi.setAttribute("id", "googleMaps");
+        
+        //calls the initMap() to actually create the map and position the marker 
+        googleMapApi.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAXlGIU84NMenpp9ni_L4kMo9HOq7uHMgo&callback=initMap");
+        if (loadGoogleMapsOnce === 0) {
+            document.body.appendChild(googleMapApi);
+            googleMapApi.removeAttribute("src");
+            loadGoogleMapsOnce = loadGoogleMapsOnce + 1;
+        } 
+        else {
+            initMap();
+        }
+    }
 
 })();
 
 function initMap() {
     let searchInput;
-    if (window.location.hash) {
-        searchInput = window.location.hash.substr(1);
-    } else {
-        searchInput = document.getElementById("searchInput").value;
-    }
-    
+
+    let index = document.getElementById("googleMaps").getAttribute("data-index");
     let obj = JSON.parse(jsonString);
-    let index = obj.findIndex(function (item, i) {
-        return item.name === searchInput;
-    });
 
     let originLatData = `${obj[index].originLat}`;
+    console.log(originLatData);
     let originLongData = `${obj[index].originLong}`;
     let location = {lat: parseInt(originLatData, 10), lng: parseInt(originLongData, 10)};
     let googleMap = new google.maps.Map(document.getElementById('map'), {
