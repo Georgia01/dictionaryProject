@@ -13,6 +13,11 @@ body {
     background-image: url("../images/swirls.jpg");
 }
 
+@keyframes colourChange{
+    from {color: black;}
+    to   {color: #AFDCEC;}
+}
+
 @keyframes movingHeader{
 0% {
     transform: translateY(-0%);
@@ -152,7 +157,6 @@ label {
     border: 0.15em solid white;
     background-color: gray;
     color: white;
-    -webkit-transition: border 0.25s; 
     transition: border 0.25s;
     cursor: pointer;
  }
@@ -179,6 +183,10 @@ label {
      cursor: pointer;
  }
  
+ .navLink:hover {
+    animation: colourChange 1s infinite alternate;
+ }
+ 
  #randomWord {
         border: none;
         border: 0.1em solid gray;
@@ -202,7 +210,7 @@ label {
 @media screen and (min-width: 500px) {
     /* styles for above mobile sizes  - can add hover comands here*/
 
-    @keyframes movingHeader{
+    @keyframes movingHeader {
         0% {
             transform: translateY(-0%);
         }
@@ -211,7 +219,7 @@ label {
         }
     }
 
-    @keyframes movingBody{
+    @keyframes movingBody {
         0% {
             transform: translateY(-0%);
         }
@@ -240,6 +248,10 @@ label {
 
     #magGlass {
         cursor: pointer;
+    }
+    
+    #magGlass:hover {
+        animation: colourChange 1s 1 forwards;
     }
 
     #tabs {
