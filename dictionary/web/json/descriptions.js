@@ -162,14 +162,6 @@ let jsonString = `
     "originLat":"37.9838",
     "originLong":"23.7275"
   },
-  {
-    "name":"type",
-    "type":"noun",
-    "description":"An unexpected or incorrect result that is created by an error, failure or fault in a computer program",
-    "example": ["There is a bug in this program causing an ArrayOutOfBounds exception", "There must be a bug in this code somewhere.", "I have found the software bug."],
-    "originLat":"36.546296",
-    "originLong":"-78.6569"
-  },
   { 
     "name":"exception",
     "type":"noun",

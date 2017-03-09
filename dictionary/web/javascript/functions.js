@@ -2,13 +2,14 @@
     let loadGoogleMapsOnce = 0;
     let moveMaindOnce = 0;
     let randomWord = "";
+    let allNavItems = 0;
     let obj = JSON.parse(jsonString);
     
     let googleMapApi = document.createElement("script");
-    document.getElementById("searchBox").addEventListener("submit", search);
+    document.getElementById("searchBox").addEventListener( "submit", search);
     document.getElementById("randomWord").addEventListener("click", loadRandomWord);
 
-    function search() {
+    function search(event) {
         let searchInput = "";
 
         if (window.location.hash) {
@@ -34,17 +35,17 @@
         } else {
             document.getElementById("mainContent").style.display = "none";
             document.getElementById("wordList").style.display = "block";
+            getFullNavigation();
         }
 
-        expandMain();
+        expandMain(e);
         window.location.hash = "";
         event.preventDefault();
-//        getFullNavigation();
     }
 
-    function loadRandomWord() {
+    function loadRandomWord(event) {
         window.location.hash = randomWord;
-        search();
+        search(event);
     }
 
     function expandMain() {
@@ -62,7 +63,6 @@
             document.body.style.marginTop = "0px";
             document.getElementById("pageHeader").style.paddingTop = "0px";
         }
-        event.preventDefault();
     }
 
     function fillInDetails(obj, index) {
@@ -96,8 +96,6 @@
         let name = `${obj[randomIndex].name}`;
         randomWord = name;
         randomWordSection.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
-        
-        event.preventDefault();
     }
 
     function addMap() {
@@ -116,21 +114,8 @@
     }
 
     function getFullNavigation() {
-        let finalNavOutput = "";
-        let name;
-        let sortedValues = obj.sort(function (firstWord, secondWord) {
-            return compareStrings(firstWord.name, secondWord.name);
-        });
-        
-        for (i = 0; i < sortedValues.length; i++) {
-            name = sortedValues[i].name;
-            finalNavOutput += name.charAt(0).toUpperCase() + name.slice(1) + "</br>";
-        }
-        
-        let width =  (document.getElementById('mainBody').offsetWidth)/3 - 40;
-        document.getElementById("navColumns").style.columns = width + "px 3";
-        let navSection = document.getElementById("wordList");
-        navSection.innerHTML = finalNavOutput;
+       allNavItems = 1;
+       getSingleNav();
     }
 
     function compareStrings(firstName, secondName) {
@@ -139,23 +124,48 @@
         return (firstName < secondName) ? -1 : (firstName > secondName) ? 1 : 0;
     }
 
+    function loadWordFromNav(event) {
+        window.location.hash = event.target.id;
+        search(event);
+    }
+
     function getSingleNav(event) {
         let finalNavOutput = "";
         let name;
+        
+        //sort into alphabetical order
         let sortedValues = obj.sort(function (firstWord, secondWord) {
             return compareStrings(firstWord.name, secondWord.name);
         });
         
         for (i = 0; i < sortedValues.length; i++) {
             name = sortedValues[i].name;
-            if (name.charAt(0) === event.target.id)
-            finalNavOutput += name.charAt(0).toUpperCase() + name.slice(1) + "</br>";
+            if (allNavItems === 1) {
+                finalNavOutput += "<button class='navLink' id='" + name + "'>" + name.charAt(0).toUpperCase() + name.slice(1) + "</button></br>";
+            }
+            else if (name.charAt(0) === event.target.id) {
+                finalNavOutput += "<button class='navLink' id='" + name + "'>" + name.charAt(0).toUpperCase() + name.slice(1) + "</button></br>";
+            }
         }
-        
-        let width =  (document.getElementById('mainBody').offsetWidth)/3 - 40;
-        document.getElementById("navColumns").style.columns = width + "px 3";
+        allNavItems = 0;
+        let width = (document.getElementById('mainBody').offsetWidth);
+        console.log("w: " + width);
+        if (width > 320 && width < 500) {
+            let width = (document.getElementById('mainBody').offsetWidth)/2 - 40;
+            document.getElementById("navColumns").style.columns = width + "px 2";
+        }
+        else if (width >= 500){
+            let width = (document.getElementById('mainBody').offsetWidth)/3 - 40;
+            document.getElementById("navColumns").style.columns = width + "px 3";
+        }
         let navSection = document.getElementById("wordList");
         navSection.innerHTML = finalNavOutput;
+        
+        let allItems = document.getElementsByClassName("navLink");
+        for (var i = 0; i < allItems.length; i++) {
+            allItems[i].addEventListener('click', loadWordFromNav);
+        }
+        
         document.getElementById("mainContent").style.display = "none";
         document.getElementById("wordList").style.display = "block";
     }

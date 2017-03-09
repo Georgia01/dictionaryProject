@@ -82,17 +82,30 @@ h2 {
 }
 
 #mainBody {
-     /*before search*/ 
-     display: none;
-    /*display: block;*/  
+    display: none;
     padding: 2em;
-    /*border: solid 0.5em #32cd32;*/
     border-radius: 20px 20px 20px 20px;
     background-color: white;
 }
 
+#navColumns {
+    padding-top: 2em;
+}
+
 footer {
     height: 2em;
+}
+
+label {
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+
+.pageHeaders {
+    text-decoration: underline;
+    font-size: 1.5em;
+    font-weight: normal;
 }
 
  /* Gets rid of bullet point and just leaves the label*/
@@ -101,7 +114,7 @@ footer {
 }
 
 .content {
-    padding-bottom: 2em;
+    padding: 0.5em 0em 2em 0em
 }
 
 #origin {
@@ -117,6 +130,7 @@ footer {
     list-style: none;
     margin: auto;
     padding: 0em;
+    text-align: center;
  }
  
  .navigationList li{
@@ -141,12 +155,41 @@ footer {
  }
  
  #wordList {
-     margin-top: -1em;
-     min-height: 20em;
-     padding-top: 2em;
-     
+     margin-top: -0.75em;    
  }
-
+ 
+ #rightPanel {
+    text-align: center;
+ }
+ 
+ .navLink {
+     border: none;
+     background-color: white;
+     text-decoration: underline;
+     font-size: 1.2em;
+     padding-bottom: 10px;
+     cursor: pointer;
+ }
+ 
+ #randomWord {
+        border: none;
+        border: 0.1em solid gray;
+        border-radius: 15px;
+        background-color: #73A0B0;
+        text-align: center;
+        font-size: 1.4em;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 0.5em;
+        padding: 5px 20px;
+    }
+    
+    #randomWord:hover {
+        color: black;
+        border-color: #AFDCEC;
+        background-color: #AFDCEC;
+    }
+ 
 /* ========================== FIRST BREAKPOINT ========================== */
 @media screen and (min-width: 500px) {
     /* styles for above mobile sizes  - can add hover comands here*/
@@ -210,6 +253,8 @@ footer {
         display: inline-block;
         vertical-align: middle;
         cursor: pointer;
+        font-size: 1em;
+        text-decoration: none;
     }
 
     /* Decoration and padding to make labels look lik tabs*/
@@ -219,7 +264,7 @@ footer {
     }
     
     /*where details are displayed. Makes box boundaries*/
-    .content {              
+    .content {   
         position: absolute;
         top: 3em;
         left: 0%;               /*very important! Puts content on top of each other*/ 
@@ -234,27 +279,12 @@ footer {
         height: 80%;
     }
     
-    #randomHeader {
+    .pageHeaders {
         text-align: center;
         font-family: 'Caveat Brush', cursive;
+        text-decoration: none;
         font-size: 1.6em;
         margin-bottom: 0.5em;
-    }
-    
-    #randomWord {
-        border: none;
-        border-bottom: 0.3em solid gray;
-        background-color: white;
-        text-align: center;
-        font-size: 1.4em;
-        color: #73A0B0;
-        cursor: pointer;
-        margin-bottom: 0.5em;
-    }
-    
-    #randomWord:hover {
-        color: black;
-        border-bottom: 0.3em solid #AFDCEC;
     }
     
     [type=radio]:checked ~ label {
@@ -279,7 +309,6 @@ footer {
 
     #rightPanel {
         float: right;
-        text-align: center;
         width: 23%;
         border: 5px solid #AFDCEC;
         margin: auto;
@@ -352,8 +381,12 @@ footer {
     }
     
     body {
-        width: 70%;
+        width: 65%;
         margin: auto;
+    }
+    
+    #rightPanel {
+        width: 24%;
     }
 
     #searchBox {
@@ -369,10 +402,14 @@ footer {
 
 @media screen and (min-width: 1136px) {
     
-    .navigationButton {
+    .pageHeaders {
+        font-size: 2.5em;
+    }
+    
+/*    .navigationButton {
         width: 3em;
         height: 3em;
-    }
+    }*/
 }
 
 /* ========================== Mini BREAKPOINT ========================== */
