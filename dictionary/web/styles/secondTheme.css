@@ -125,8 +125,8 @@ footer {
  
  .navigationButton {
     border-radius: 25px;
-    width: 2em;
-    height: 2em;
+    width: 4em;
+    height: 4em;
     border: 0.15em solid white;
     background-color: gray;
     color: white;
@@ -142,7 +142,9 @@ footer {
  
  #wordList {
      margin-top: -1em;
-     height: 20em;
+     min-height: 20em;
+     padding-top: 2em;
+     
  }
 
 /* ========================== FIRST BREAKPOINT ========================== */
@@ -278,23 +280,23 @@ footer {
     #rightPanel {
         float: right;
         text-align: center;
-        width: 20%;
+        width: 23%;
         border: 5px solid #AFDCEC;
         margin: auto;
         padding: 0.3em;
         border-radius: 20px;
-        margin: 2em 1em 3em 0em;
+        margin: 0em 1em 1em 0em;
     }
     
     #tabs {
         float: left;
-        width: 73%;
+        width: 70%;
         margin: 0em;
     }
     
     .navigationButton {
-        width: 3em;
-        height: 3em;
+        width: 2.5em;
+        height: 2.5em;
         margin: 0.15em;
     }
  
@@ -314,6 +316,16 @@ footer {
         100% {
             transform: translateY(-22%);
         }
+    }
+}
+
+/* ========================== Mini BREAKPOINT ========================== */
+
+@media screen and (min-width: 808px) {
+    
+    .navigationButton {
+        width: 2.75em;
+        height: 2.75em;
     }
 }
 
@@ -355,9 +367,32 @@ footer {
 
 /* ========================== Mini BREAKPOINT ========================== */
 
-@media screen and (min-width: 1513px) {
+@media screen and (min-width: 1136px) {
+    
+    .navigationButton {
+        width: 3em;
+        height: 3em;
+    }
+}
+
+/* ========================== Mini BREAKPOINT ========================== */
+
+@media screen and (min-width: 1200px) {
    #rightPanel {
-        width: 23%;
+        width: 25%;
+    }
+    
+    .navigationButton {
+        width: 3.5em;
+        height: 3.5em;
+    }
+}
+
+/* ========================== Mini BREAKPOINT ========================== */
+
+@media screen and (min-width: 1400px) {
+   #rightPanel {
+        width: 26%;
     }
 }
 
