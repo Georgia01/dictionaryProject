@@ -39,7 +39,7 @@
         expandMain();
         window.location.hash = "";
         event.preventDefault();
-        getFullNavigation();
+//        getFullNavigation();
     }
 
     function loadRandomWord() {
@@ -117,17 +117,17 @@
 
     function getFullNavigation() {
         let finalNavOutput = "";
+        let name;
         let sortedValues = obj.sort(function (firstWord, secondWord) {
             return compareStrings(firstWord.name, secondWord.name);
         });
         
         for (i = 0; i < sortedValues.length; i++) {
-            finalNavOutput += `${sortedValues[i].name}` + "</br>";
+            name = sortedValues[i].name;
+            finalNavOutput += name.charAt(0).toUpperCase() + name.slice(1) + "</br>";
         }
         
         let width =  (document.getElementById('mainBody').offsetWidth)/3 - 40;
-        console.log("w: " + width);
-        console.log("w2: " + document.getElementById('mainBody').offsetWidth);
         document.getElementById("navColumns").style.columns = width + "px 3";
         let navSection = document.getElementById("wordList");
         navSection.innerHTML = finalNavOutput;
@@ -138,6 +138,34 @@
         secondName = secondName.toLowerCase();
         return (firstName < secondName) ? -1 : (firstName > secondName) ? 1 : 0;
     }
+
+    function getSingleNav(event) {
+        let finalNavOutput = "";
+        let name;
+        let sortedValues = obj.sort(function (firstWord, secondWord) {
+            return compareStrings(firstWord.name, secondWord.name);
+        });
+        
+        for (i = 0; i < sortedValues.length; i++) {
+            name = sortedValues[i].name;
+            if (name.charAt(0) === event.target.id)
+            finalNavOutput += name.charAt(0).toUpperCase() + name.slice(1) + "</br>";
+        }
+        
+        let width =  (document.getElementById('mainBody').offsetWidth)/3 - 40;
+        document.getElementById("navColumns").style.columns = width + "px 3";
+        let navSection = document.getElementById("wordList");
+        navSection.innerHTML = finalNavOutput;
+        document.getElementById("mainContent").style.display = "none";
+        document.getElementById("wordList").style.display = "block";
+    }
+    
+    (function () {
+        let navClass = document.getElementsByClassName("navigationButton");
+        for (var i = 0; i < navClass.length; i++) {
+            navClass[i].addEventListener('click', getSingleNav);
+        }
+    })();
 
 })();
 
