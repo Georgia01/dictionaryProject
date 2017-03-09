@@ -14,8 +14,8 @@ body {
 }
 
 @keyframes colourChange{
-    from {color: black;}
-    to   {color: #AFDCEC;}
+    from { color: black;}
+    to   { color: #AFDCEC;}
 }
 
 @keyframes movingHeader{
@@ -87,6 +87,8 @@ h2 {
 }
 
 #errorBox {
+    position: absolute;
+    width: 100%;
     text-align: center;
     color: red;
     font-weight: bold;
@@ -114,11 +116,14 @@ label {
     text-decoration: underline;
 }
 
-
 .pageHeaders {
     text-decoration: underline;
     font-size: 1.5em;
     font-weight: normal;
+}
+
+#randomWordHeading {
+    text-align: left;
 }
 
  /* Gets rid of bullet point and just leaves the label*/
@@ -224,7 +229,7 @@ label {
             transform: translateY(-0%);
         }
         100% {
-            transform: translateY(-18%);
+            transform: translateY(-14%);
         }
     }
     
@@ -307,6 +312,10 @@ label {
         margin-bottom: 0.5em;
     }
     
+    #randomWordHeading {
+        text-align: center;
+    }
+    
     [type=radio]:checked ~ label {
         background: white;
         border-bottom: 0.3em solid #AFDCEC;
@@ -383,8 +392,7 @@ label {
     }
 }
 
-
-/* ========================== Last BREAKPOINT ========================== */
+/* ========================== Last major BREAKPOINT ========================== */
 @media screen and (min-width: 960px) {
 
     @keyframes movingHeader{
@@ -445,25 +453,21 @@ label {
     }
     
     .navigationButton {
-        width: 3.5em;
-        height: 3.5em;
+        width: 3.1em;
+        height: 3.1em;
     }
     
     #randomWord {
         font-size: 1.4em;
         padding: 5px 20px;
     }
-}
-
-/* ========================== Mini BREAKPOINT ========================== */
-
-@media screen and (min-width: 1400px) {
-   #rightPanel {
-        width: 26%;
+    
+    @keyframes movingBody{
+        0% {
+            transform: translateY(-0%);
+        }
+        100% {
+            transform: translateY(-29%);
+        }
     }
 }
-
-
-
-
-
