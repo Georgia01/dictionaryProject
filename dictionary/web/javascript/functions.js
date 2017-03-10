@@ -18,7 +18,6 @@
         } else {
             searchInput = document.getElementById("searchInput").value;
         }
-        console.log(`searchInput: ${searchInput}`);
 
         //see if the word exists. If it doesn't then index = -1
         let index = obj.findIndex(function (item, i) {
@@ -31,7 +30,6 @@
             document.getElementById("wordList").style.display = "none";
             document.getElementById("errorBox").style.display = "none";
             fillInDetails(obj, index);
-            console.log(`searchInput2: ${searchInput}`);
             addMap(index);
             createRandomWord(obj);
         } else {
@@ -114,7 +112,6 @@
 
     function loadWordFromNav(event) {
         window.location.hash = event.target.id;
-        console.log("0.5: " + event.target.id);
         search(event);
     }
 
@@ -138,7 +135,6 @@
         }
         allNavItems = 0;
         let width = (document.getElementById('mainBody').offsetWidth);
-        console.log("w: " + width);
         if (width > 320 && width < 500) {
             let width = (document.getElementById('mainBody').offsetWidth)/2 - 40;
             document.getElementById("navColumns").style.columns = width + "px 2";
@@ -147,6 +143,11 @@
             let width = (document.getElementById('mainBody').offsetWidth)/3 - 40;
             document.getElementById("navColumns").style.columns = width + "px 3";
         }
+        
+        if (finalNavOutput === "") {
+            finalNavOutput = "<strong>No words for this letter.</strong>";
+        }
+        
         let navSection = document.getElementById("wordList");
         navSection.innerHTML = finalNavOutput;
         
@@ -193,7 +194,6 @@ function initMap() {
     let obj = JSON.parse(jsonString);
 
     let originLatData = `${obj[index].originLat}`;
-    console.log(originLatData);
     let originLongData = `${obj[index].originLong}`;
     let location = {lat: parseInt(originLatData, 10), lng: parseInt(originLongData, 10)};
     let googleMap = new google.maps.Map(document.getElementById('map'), {
