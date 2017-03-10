@@ -39,8 +39,6 @@ body {
 #pageHeader {
     font-family: 'Leckerli One', cursive;
     width: 100%;
-    /*width: 60%;*/
-    /*max-width: 300px;*/
     padding-bottom:0.5em;
     min-width: 200px;
     margin: 0em;
@@ -52,7 +50,6 @@ body {
 h2 {
     font-size: 1em;
 }
-
 
 #name {
     font-family: 'Caveat Brush', cursive;
@@ -98,7 +95,7 @@ h2 {
 
 #mainBody {
     display: none;
-    padding: 2em;
+    padding: 0em 2em;
     border-radius: 20px 20px 20px 20px;
     background-color: white;
 }
@@ -142,18 +139,18 @@ label {
 #map {
     height: 100%;
     width: 100%;
- }
+}
 
  .navigationList {
     list-style: none;
     margin: auto;
     padding: 0em;
-    text-align: center;
- }
+    text-align: center; 
+}
  
  .navigationList li{
      display: inline;
- }
+}
  
  .navigationButton {
     border-radius: 25px;
@@ -164,52 +161,52 @@ label {
     color: white;
     transition: border 0.25s;
     cursor: pointer;
- }
+}
  
 .navigationButton:hover {
     background-color: #AFDCEC;
     border: 0.15em solid #AFDCEC;
- }
+}
  
- #wordList {
-     margin-top: -0.75em;    
- }
+#wordList {
+    margin-top: -0.75em;    
+}
  
- #rightPanel {
+#rightPanel {
     text-align: center;
- }
+}
  
- .navLink {
-     border: none;
-     background-color: white;
-     text-decoration: underline;
-     font-size: 1.2em;
-     padding-bottom: 10px;
-     cursor: pointer;
- }
+.navLink {
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
  
- .navLink:hover {
+.navLink:hover {
     animation: colourChange 1s infinite alternate;
- }
+}
  
- #randomWord {
-        border: none;
-        border: 0.1em solid gray;
-        border-radius: 15px;
-        background-color: #73A0B0;
-        text-align: center;
-        font-size: 1.2em;
-        color: white;
-        cursor: pointer;
-        margin-bottom: 0.5em;
-        padding: 5px 20px;
-    }
-    
-    #randomWord:hover {
-        color: black;
-        border-color: #AFDCEC;
-        background-color: #AFDCEC;
-    }
+#randomWord {
+    border: none;
+    border: 0.1em solid gray;
+    border-radius: 15px;
+    background-color: #73A0B0;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+    padding: 5px 20px;
+}
+
+#randomWord:hover {
+    color: black;
+    border-color: #AFDCEC;
+    background-color: #AFDCEC;
+}
  
 /* ========================== FIRST BREAKPOINT ========================== */
 @media screen and (min-width: 500px) {
@@ -326,7 +323,6 @@ label {
         z-index: 1;                       
     }
 }
-
 
 /* ========================== Middle BREAKPOINT ========================== */
 @media screen and (min-width: 750px) {
@@ -448,7 +444,8 @@ label {
 /* ========================== Mini BREAKPOINT ========================== */
 
 @media screen and (min-width: 1200px) {
-   #rightPanel {
+    
+    #rightPanel {
         width: 25%;
     }
     
